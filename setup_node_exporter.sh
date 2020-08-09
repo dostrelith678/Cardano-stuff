@@ -14,10 +14,6 @@ cd monitoring
 wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz
 tar xvfz node_exporter-1.0.1.linux-amd64.tar.gz
 
-#start NODEEXP
-#cd node_exporter-1.0.1.linux-amd64
-#./node_exporter
-
 #create systemd service
 sudo touch /etc/systemd/system/node_exporter.service
 cat > /etc/systemd/system/node_exporter.service <<EOF
