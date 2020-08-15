@@ -1,1 +1,34 @@
+sudo journalctl -u ssh
+sudo journalctl -eu ssh
+
+Disabling root login:
+
+sudo adduser example
+sudo adduser example sudo
+sudo su - example
+
+mkdir ~/.ssh
+nano ~/.ssh/authorized_keys
+
+sudo nano /etc/ssh/sshd_config
+sudo systemctl restart ssh
+
+Setup 2FA:
+
+sudo apt install libpam-google-authenticator
+google-authenticator
+
+sudo nano /etc/ssh/sshd_config
+sudo systemctl restart ssh
+
+sudo nano /etc/pam.d/sshd
+-> 
+#One-time authentication via Google Authenticator
+auth required pam_google_authenticator.so
+
+sudo nano /etc/ssh/sshd_config
+->
+AuthenticationMethods publickey,keyboard-interactive
+
+sudo apt install fail2ban
 
