@@ -2,14 +2,15 @@
 #Kill and restart node
 
 killall cardano-node
-sleep 2
+sleep 3
 
 #kill tmux session
 tmux kill-session -t relay
-sleep 2
-#restart node
-SCRIPT_PATH="/opt/cardano/cnode/scripts/cnode.sh"
 
+#restart node
+SCRIPT_PATH="/opt/cardano/cnode/scripts/cnode-relay.sh"
+
+sleep 1
 tmux new -s "relay" -d
-sleep 2
+sleep 1
 tmux send-keys -t "relay" "$SCRIPT_PATH" C-m
