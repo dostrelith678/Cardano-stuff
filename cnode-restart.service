@@ -1,0 +1,14 @@
+[Unit]
+Description=Restarts the cardano-node
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=forking
+Restart=always
+RuntimeMaxSec=15
+User=root
+ExecStart=/opt/cardano/cnode/scripts/cnode-restart.sh
+
+[Install]
+WantedBy=multi-user.target
