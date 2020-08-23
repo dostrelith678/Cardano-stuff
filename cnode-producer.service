@@ -1,0 +1,13 @@
+[Unit]
+Description=Restarts the cardano-node
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=forking
+Restart=on-failure
+User=root
+ExecStart=/opt/cardano/cnode/scripts/cnode-producer.sh
+
+[Install]
+WantedBy=multi-user.target
