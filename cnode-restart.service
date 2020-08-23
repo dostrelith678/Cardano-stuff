@@ -6,7 +6,7 @@ StartLimitIntervalSec=0
 [Service]
 Type=forking
 Restart=always
-RuntimeMaxSec=15
+RuntimeMaxSec=15 #edit restart time in seconds
 User=root
 ExecStart=/opt/cardano/cnode/scripts/cnode-restart.sh
 
