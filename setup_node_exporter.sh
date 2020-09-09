@@ -28,7 +28,7 @@ ExecStart=$NEXP_DIR/node_exporter --web.listen-address="$CNODE_IP:$NEXP_PORT"
 WorkingDirectory=$NEXP_DIR
 LimitNOFILE=3500
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
 EOF
 
 #restart daemon and enable service
