@@ -5,7 +5,7 @@
 ######################################################################
 CNODE_IP=0.0.0.0
 NEXP_PORT=9091
-NEXP_DIR="/tmp/monitoring/node_exporter-1.0.1.linux-amd64"
+NEXP_DIR="~/tmp/monitoring/node_exporter-1.0.1.linux-amd64"
 
 #get node_exporter to tmp directorty
 cd /tmp
