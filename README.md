@@ -1,8 +1,13 @@
-# shelley-scripts
+# Useful commands
 
 Delete logs older than 1 day
 ```bash
 find /opt/cardano/cnode/logs/archive/ -mtime +1 -name "*.json" -print -exec /bin/rm {} \;
+```
+
+# Epoch Nonce
+```
+cardano-cli query protocol-state --mainnet --mary-era | jq -r .csTickn.ticknStateEpochNonce.contents
 ```
 
 ## Setting up cardano-graphQL
