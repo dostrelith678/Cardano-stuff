@@ -20,7 +20,7 @@ Add:
 ...
 
 # Block too many connections to node from the same IP
--A ufw-before-input -p tcp -m tcp -m connlimit --connlimit-above 3 --connlimit-mask 32 --connlimit-saddr  --dport 6000 -j DROP
+-A ufw-before-input -p tcp -m tcp -m connlimit --connlimit-above 3 --connlimit-mask 32 --connlimit-saddr  --dport <NODE_PORT> -j DROP
 
 ...
 ```
