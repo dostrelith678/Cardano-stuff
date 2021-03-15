@@ -10,7 +10,19 @@ find /opt/cardano/cnode/logs/archive/ -mtime +1 -name "*.json" -print -exec /bin
 cardano-cli query protocol-state --mainnet --mary-era | jq -r .csTickn.ticknStateEpochNonce.contents
 ```
 
-## Setting up cardano-graphQL
+# Block multiple connections to the node from the same IP Address (possible attacks)
+Edit the ufw before.rules file:
+```
+sudo nano /etc/ufw/before.rules
+```
+Add:
+```
+...
+# Block too many connections to node from the same IP
+-A ufw-before-input -p tcp -m tcp -m connlimit --connlimit-above 3 --connlimit-mask 32 --connlimit-saddr  --dport 6000 -j DROP
+...
+```
+# Setting up cardano-graphQL
 
 After setting-up db-sync/-extended:
 
