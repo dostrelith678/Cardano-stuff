@@ -15,14 +15,11 @@ Edit the ufw before.rules file:
 ```
 sudo nano /etc/ufw/before.rules
 ```
-Add:
+Add the following:
 ```
-...
-
 # Block too many connections to node from the same IP
 -A ufw-before-input -p tcp -m tcp -m connlimit --connlimit-above 3 --connlimit-mask 32 --connlimit-saddr  --dport <NODE_PORT> -j DROP
 
-...
 ```
 Reload the ufw to apply:
 ```
