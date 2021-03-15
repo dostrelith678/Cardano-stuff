@@ -18,10 +18,17 @@ sudo nano /etc/ufw/before.rules
 Add:
 ```
 ...
+
 # Block too many connections to node from the same IP
 -A ufw-before-input -p tcp -m tcp -m connlimit --connlimit-above 3 --connlimit-mask 32 --connlimit-saddr  --dport 6000 -j DROP
+
 ...
 ```
+Reload the ufw to apply:
+```
+sudo ufw reload
+```
+
 # Setting up cardano-graphQL
 
 After setting-up db-sync/-extended:
