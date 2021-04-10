@@ -7,7 +7,7 @@ find /opt/cardano/cnode/logs/archive/ -mtime +1 -name "*.json" -print -exec /bin
 
 # Epoch Nonce
 ```
-cardano-cli query protocol-state --mainnet --mary-era | jq -r .csTickn.ticknStateEpochNonce.contents
+cardano-cli query protocol-state --mainnet | jq -r .csTickn.ticknStateEpochNonce.contents
 ```
 
 # Block multiple connections to the node from the same IP Address (possible attacks)
