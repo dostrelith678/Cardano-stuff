@@ -24,7 +24,7 @@ After=network-online.target
 [Service]
 User=$(whoami)
 Restart=on-failure
-ExecStart=$NEXP_DIR/node_exporter --web.listen-address="$CNODE_IP:$NEXP_PORT"
+ExecStart=$NEXP_DIR/node_exporter --collector.systemd --web.listen-address="$CNODE_IP:$NEXP_PORT"
 WorkingDirectory=$NEXP_DIR
 LimitNOFILE=3500
 [Install]
