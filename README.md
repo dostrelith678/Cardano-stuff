@@ -26,7 +26,10 @@ Reload the ufw to apply:
 sudo ufw reload
 ```
 
-# Setting up cardano-graphQL
+## Latest config
+https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1/index.html
+
+# Setting up cardano-graphQL (outdated)
 
 After setting-up db-sync/-extended:
 
