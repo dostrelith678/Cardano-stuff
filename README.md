@@ -29,58 +29,15 @@ sudo ufw reload
 ## Latest config
 https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1/index.html
 
-# Setting up cardano-graphQL (outdated)
-
-After setting-up db-sync/-extended:
-
-1) Install Nix
-```bash
-curl -L https://nixos.org/nix/install | sh
+# ZFS
 ```
-
-2) Build cardano-graphQL server and Hasura
-```bash
-git clone https://github.com/input-output-hk/cardano-graphql
-cd cardano-graphql
-```
-
-graphQL
-```bash
-nix-build -A cardano-graphql -o nix-build/cardano-graphql
-```
-
-Hasura
-```bash
-nix-build -A graphql-engine -o nix-build/graphql-engine # this one takes many hours
-
-nix-build -A hasura-cli -o nix-build/hasura-cli
-```
-
-Now in separate terminals (tmux), run (from same directory as above - cardano-graphql):
-
-1)
-```bash
-./nix-build/graphql-engine/bin/graphql-engine \
-  --host "localhost" \
-  -u "someUsername" \
-  --password "somePassword" \
-  -d "cexplorer" \
-  --port 5432 \
-  serve \
-  --server-port 8090 \
-  --enable-telemetry=false
-```
-
-2)
-```bash
-HASURA_URI=http://localhost:8090 \
-GENESIS_FILE_BYRON=${PWD}/config/network/mainnet/genesis/byron.json \
-GENESIS_FILE_SHELLEY=${PWD}/config/network/mainnet/genesis/shelley.json \
-POSTGRES_DB=cexplorer \
-POSTGRES_HOST=localhost \
-POSTGRES_PASSWORD=postgres \
-POSTGRES_PORT=5432 \
-POSTGRES_USER=node \
-HASURA_CLI_PATH=./nix-build/hasura-cli/bin/hasura \
-./nix-build/cardano-graphql/bin/cardano-graphql
+apt update
+apt install dpkg-dev linux-headers-generic linux-image-generic
+apt install zfs-dkms zfsutils-linux
+mkdir /opt/cardano
+chown koios:koios /opt/cardano
+dd if=/dev/zero of=/opt/cardano/disk.000 bs=1M count=409600 # adjust as required
+zpool create koiosdisk /opt/cardano/disk.000
+zfs set mountpoint=/opt/cardano/cnode koiosdisk
+zfs set compression=lz4 koiosdisk
 ```
