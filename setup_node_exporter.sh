@@ -5,14 +5,14 @@
 ######################################################################
 CNODE_IP=0.0.0.0
 NEXP_PORT=9091
-NEXP_DIR="/opt/monitoring/node_exporter-1.1.2.linux-amd64"
+NEXP_DIR="/opt/monitoring/node_exporter-1.5.0.linux-amd64"
 
 #get node_exporter to tmp directorty
 cd /opt
 mkdir monitoring
 cd monitoring
-wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-amd64.tar.gz
-tar xvfz node_exporter-1.1.2.linux-amd64.tar.gz
+wget https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
+tar xvfz node_exporter-1.5.0.linux-amd64.tar.gz
 
 #create systemd service
 sudo touch /etc/systemd/system/node_exporter.service
